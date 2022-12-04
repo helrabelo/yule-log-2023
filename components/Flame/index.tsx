@@ -1,56 +1,79 @@
-import { useState, useEffect } from 'react';
-import { flameA, flameB, flameC, flameD, flameE, flameF } from './paths';
-import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
-import { getIndex, useFlubber } from './use-flubber';
+import { motion } from 'framer-motion';
 
-const paths = [flameE, flameC, flameD, flameB, flameF, flameA, flameE];
-const colors = [
-  // '#00cc88',
-  // '#0099ff',
-  // '#8855ff',
-  // '#ff0055',
-  // '#ee4444',
-  // '#ffcc00',
-  // '#00cc88',
-  'hsla(0, 0%, 95%, 1)',
-  'hsla(0, 0%, 95%, 1)',
-  'hsla(0, 0%, 95%, 1)',
-  'hsla(0, 0%, 95%, 1)',
-  'hsla(0, 0%, 95%, 1)',
-  'hsla(0, 0%, 95%, 1)',
-  'hsla(0, 0%, 95%, 1)',
-];
+export const getIndex = (_: any, index: number) => index;
 
-export default function Flames() {
-  const [pathIndex, setPathIndex] = useState(0);
-  const progress = useMotionValue(pathIndex);
-  const fill = useTransform(progress, paths.map(getIndex), colors);
-  const path = useFlubber(progress, paths);
-
-  useEffect(() => {
-    const animation = animate(progress, pathIndex, {
-      duration: 1.5,
-      ease: 'easeInOut',
-      onComplete: () => {
-        if (pathIndex === paths.length - 1) {
-          progress.set(0);
-          setPathIndex(1);
-        } else {
-          setPathIndex(pathIndex + 1);
-        }
-      },
-    });
-
-    return () => animation.stop();
-  }, [pathIndex]);
+const Flame = () => {
+  const colors = ['#ff0000', '#ff5a00', '#ff9a00', '#ffce00', '#ffe808'];
 
   return (
-    <div className="border-4 border-green-900">
-      <svg width="384" height="384">
-        <g transform="translate(90 0) scale(4 4)">
-          <motion.path fill={fill} d={path} />
-        </g>
-      </svg>
+    <div className="absolute w-full h-full bottom-0 left-0">
+      <motion.svg
+        className="absolute bottom-8 left-32 h-32 w-32 z-40"
+        initial={{ scale: 0.9, skew: '0deg', rotate: '0deg', opacity: 0.6 }}
+        animate={{ scale: 1.1, skew: '12deg', rotate: '12deg', opacity: 0.8 }}
+        transition={{ duration: 3, repeat: Infinity, repeatType: 'mirror' }}
+        fill={colors[0]}
+        version="1.1"
+        id="Layer_1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+        x="0px"
+        y="0px"
+        viewBox="0 0 54.9 99.2"
+        xmlSpace="preserve"
+      >
+        <path d="M6.6,84.6c3.1,5.5,9.2,11.7,16.7,14.3l1.1,0.3c14.3-3.8,25.4-15.6,28.9-29.7c4.3-15.7-0.8-28.3-9.9-40.9 c-6-8.4-17-17-14.9-28.6c-4.1,3.9-7.8,9.9-6.5,18.3c1.5,9.4,8.6,22.4-1.7,25.1c-5.4,1.4-9.9-6.7-6.2-11.9C-2.2,44-3.9,68.6,6.6,84.6 z M8,63.4c1.8-5.1,4.8-8.7,9-12.1c4.6-3.7,9.9-6.4,14.5-10.1c3.7-3,5.7-6.8,6.4-10.8c1.3,1.8,4.6,9.4,5.2,14.6 c0.9,7.6-3,11.5-8.1,15.7c-3,2.5-4.7,5.6-3.4,9.7c0.6-4.4,3.9-8.2,12.5-7.6c-5.8,0.7-4.6,6.4-3.7,9.1c1.1,3.3,2.7,7.3,1.8,11.1 c-1.3,5.5-6,8.8-10.8,10.3c1.6-1.2,3.3-3.1,4.6-5.9c3-6.8-3.3-11.7-6.8-16.5c-1.7-2.3-2.8-4.6-2.9-7.4c0-3.2,0.8-5.3,2.7-7.1 c-2.1,1-3.7,1.8-6.4,3.7c-3.7,2.6-6.3,5.1-8.8,8.4c-4.1,5.6-4.8,12.8-1.4,18.6c-1.9-2.5-3.4-5.3-4.4-8.4C6.2,73.6,6.2,68.5,8,63.4z" />
+      </motion.svg>
+      <motion.svg
+        className="absolute bottom-8 left-24 h-48 w-48 z-40"
+        initial={{ scale: 0.8, skew: '12deg', rotate: '12deg', opacity: 0.4 }}
+        animate={{ scale: 1.2, skew: '0deg', rotate: '0deg', opacity: 0.9 }}
+        transition={{ duration: 3, repeat: Infinity, repeatType: 'mirror' }}
+        fill={colors[1]}
+        version="1.1"
+        id="Layer_1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+        x="0px"
+        y="0px"
+        viewBox="0 0 54.9 99.2"
+        xmlSpace="preserve"
+      >
+        <path
+          d="M6.6,84.6c3.1,5.5,9.2,11.7,16.7,14.3l1.1,0.3c14.3-3.8,25.4-15.6,28.9-29.7c4.3-15.7-0.8-28.3-9.9-40.9
+ c-6-8.4-17-17-14.9-28.6c-4.1,3.9-7.8,9.9-6.5,18.3c1.5,9.4,8.6,22.4-1.7,25.1c-5.4,1.4-9.9-6.7-6.2-11.9C-2.2,44-3.9,68.6,6.6,84.6
+ z M8,63.4c1.8-5.1,4.8-8.7,9-12.1c4.6-3.7,9.9-6.4,14.5-10.1c3.7-3,5.7-6.8,6.4-10.8c1.3,1.8,4.6,9.4,5.2,14.6
+ c0.9,7.6-3,11.5-8.1,15.7c-3,2.5-4.7,5.6-3.4,9.7c0.6-4.4,3.9-8.2,12.5-7.6c-5.8,0.7-4.6,6.4-3.7,9.1c1.1,3.3,2.7,7.3,1.8,11.1
+ c-1.3,5.5-6,8.8-10.8,10.3c1.6-1.2,3.3-3.1,4.6-5.9c3-6.8-3.3-11.7-6.8-16.5c-1.7-2.3-2.8-4.6-2.9-7.4c0-3.2,0.8-5.3,2.7-7.1
+ c-2.1,1-3.7,1.8-6.4,3.7c-3.7,2.6-6.3,5.1-8.8,8.4c-4.1,5.6-4.8,12.8-1.4,18.6c-1.9-2.5-3.4-5.3-4.4-8.4C6.2,73.6,6.2,68.5,8,63.4z"
+        />
+      </motion.svg>
+      <motion.svg
+        className="absolute bottom-8 left-28 h-40 w-40 z-40"
+        initial={{ scale: 0.9, skew: '0deg', rotate: '0deg', opacity: 0.4 }}
+        animate={{ scale: 1.1, skew: '12deg', rotate: '12deg', opacity: 0.6 }}
+        transition={{ duration: 3, repeat: Infinity, repeatType: 'mirror' }}
+        fill={colors[3]}
+        version="1.1"
+        id="Layer_1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+        x="0px"
+        y="0px"
+        viewBox="0 0 54.9 99.2"
+        xmlSpace="preserve"
+      >
+        <path
+          d="M6.6,84.6c3.1,5.5,9.2,11.7,16.7,14.3l1.1,0.3c14.3-3.8,25.4-15.6,28.9-29.7c4.3-15.7-0.8-28.3-9.9-40.9
+ c-6-8.4-17-17-14.9-28.6c-4.1,3.9-7.8,9.9-6.5,18.3c1.5,9.4,8.6,22.4-1.7,25.1c-5.4,1.4-9.9-6.7-6.2-11.9C-2.2,44-3.9,68.6,6.6,84.6
+ z M8,63.4c1.8-5.1,4.8-8.7,9-12.1c4.6-3.7,9.9-6.4,14.5-10.1c3.7-3,5.7-6.8,6.4-10.8c1.3,1.8,4.6,9.4,5.2,14.6
+ c0.9,7.6-3,11.5-8.1,15.7c-3,2.5-4.7,5.6-3.4,9.7c0.6-4.4,3.9-8.2,12.5-7.6c-5.8,0.7-4.6,6.4-3.7,9.1c1.1,3.3,2.7,7.3,1.8,11.1
+ c-1.3,5.5-6,8.8-10.8,10.3c1.6-1.2,3.3-3.1,4.6-5.9c3-6.8-3.3-11.7-6.8-16.5c-1.7-2.3-2.8-4.6-2.9-7.4c0-3.2,0.8-5.3,2.7-7.1
+ c-2.1,1-3.7,1.8-6.4,3.7c-3.7,2.6-6.3,5.1-8.8,8.4c-4.1,5.6-4.8,12.8-1.4,18.6c-1.9-2.5-3.4-5.3-4.4-8.4C6.2,73.6,6.2,68.5,8,63.4z"
+        />
+      </motion.svg>
     </div>
   );
-}
+};
+
+export default Flame;

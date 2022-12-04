@@ -1,24 +1,16 @@
+import Woodlog from '../../public/wood-log-icon.svg';
+
 const Woods = () => {
   return (
-    <div className="flex">
-      <span className="block rounded-full p-1 bg-grey-300">
-        <span className="block rounded-full p-2 bg-grey-600">
-          <span className="block rounded-full bg-grey-200 w-4 h-4"></span>
-        </span>
-      </span>
-      <span className="block rounded-full p-1 bg-grey-300 -ml-4">
-        <span className="block rounded-full p-2 bg-grey-600">
-          <span className="block rounded-full bg-grey-200 w-4 h-4"></span>
-        </span>
-      </span>
-      <span className="block rounded-full p-1 bg-grey-300 -ml-4">
-        <span className="block rounded-full p-2 bg-grey-600">
-          <span className="block rounded-full bg-grey-200 w-4 h-4"></span>
-        </span>
-      </span>
-      
+    <div className="flex w-full h-full block relative min-w-32">
+      <div className="absolute left-1/2 -translate-x-1/2 -bottom-6 rounded-full w-32 rotate-210">
+        <Woodlog className="fill-brown-900 stroke-brown-800" />
+      </div>
+      <div className="absolute left-1/2 -translate-x-1/2 bottom-0 rounded-full w-32 rotate-n30">
+        <Woodlog className="fill-brown-900 stroke-brown-800" />
+      </div>
     </div>
-  )
+  );
 };
 
 export default Woods;

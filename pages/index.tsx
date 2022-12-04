@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 
-// import Flames from '../components/Flame'
-// import Fire from '../components/Fire';
 import Floor from '../components/Floor';
 import Woods from '../components/Woods';
 import Flames from '../components/Flames';
@@ -20,6 +18,8 @@ export default function YuleLog() {
     <>
       <div className="h-screen w-screen bg-black flex items-center justify-center relative">
         {/* <Fire /> */}
+
+        {/* Fireworks and Snow Effects */}
         {currentAnimation === 'fireworks' && (
           <div className="fixed bottom-0 left-0 z-20">
             <Fireworks />
@@ -30,14 +30,18 @@ export default function YuleLog() {
             <SnowFall />
           </div>
         )}
-        <div className="fixed bottom-0 w-1/3 h-1/3 flex items-center justify-center z-30">
-          <div className="absolute bottom-28 left-1/2 -translate-x-1/2 flex justify-center items-center w-32 h-32">
+        
+        {/* Fireplace */}
+        <div className="fixed bottom-0 flex items-center justify-center z-30">
+          <div className="absolute bottom-28 left-1/2 -translate-x-1/2 flex justify-center items-center">
             <Flames />
           </div>
           <div className="absolute bottom-24 left-1/2 -translate-x-1/2 flex justify-center items-center">
             <Woods />
           </div>
         </div>
+        
+        {/* Layered Background */}
         <div className="fixed bottom-0 left-0 z-10">
           <Floor />
         </div>
