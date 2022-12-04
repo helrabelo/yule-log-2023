@@ -1,30 +1,18 @@
 import React from 'react';
 import Particles from 'react-particles';
-import type { Engine } from 'tsparticles-engine';
 import { loadFireworksPreset } from 'tsparticles-preset-fireworks';
 
 import { rgbToHsl, setRangeValue, stringToRgb } from 'tsparticles-engine';
-import type {
-  IParticlesOptions,
-  IRangeValue,
-  ISourceOptions,
-  RangeValue,
-  RecursivePartial,
-} from 'tsparticles-engine';
 
-export class ParticlesContainer extends React.Component {
+export class ParticlesContainer {
   // this customizes the component tsParticles installation
-  async customInit(engine: Engine): Promise<void> {
+  async customInit(engine) {
     // this adds the preset to tsParticles, you can safely use the
     await loadFireworksPreset(engine);
   }
 
   render() {
-    const fixRange = (
-      value: IRangeValue,
-      min: number,
-      max: number
-    ): RangeValue => {
+    const fixRange = (value, min, max) => {
       const diffSMax = value.max > max ? value.max - max : 0;
       let res = setRangeValue(value);
 
@@ -41,13 +29,7 @@ export class ParticlesContainer extends React.Component {
       return res;
     };
 
-    const fireworksOptions: RecursivePartial<IParticlesOptions>[] = [
-      '#eee',
-      '#ddd',
-      '#ccc',
-      '#bbb',
-      '#aaa',
-    ]
+    const fireworksOptions = ['#eee', '#ddd', '#ccc', '#bbb', '#aaa']
       .map((color) => {
         const rgb = stringToRgb(color);
 
@@ -124,11 +106,11 @@ export class ParticlesContainer extends React.Component {
             direction: 'none',
             outModes: 'destroy',
           },
-        } as RecursivePartial<IParticlesOptions>;
+        };
       })
-      .filter((t) => t !== undefined) as RecursivePartial<IParticlesOptions>[];
+      .filter((t) => t !== undefined);
 
-    const options: ISourceOptions = {
+    const options = {
       detectRetina: true,
       fpsLimit: 120,
       emitters: {

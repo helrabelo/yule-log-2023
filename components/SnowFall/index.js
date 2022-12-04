@@ -1,11 +1,10 @@
 import React from 'react';
 import Particles from 'react-particles';
-import type { Engine } from 'tsparticles-engine';
 import { loadSnowPreset } from 'tsparticles-preset-snow';
 
 export class ParticlesContainer extends React.Component {
   // this customizes the component tsParticles installation
-  async customInit(engine: Engine): Promise<void> {
+  async customInit(engine) {
     // this adds the preset to tsParticles, you can safely use the
     await loadSnowPreset(engine);
   }
@@ -17,7 +16,7 @@ export class ParticlesContainer extends React.Component {
       // },
       particles: {
         move: {
-          direction: "bottom",
+          direction: 'bottom',
           enable: true,
           random: false,
           straight: false,

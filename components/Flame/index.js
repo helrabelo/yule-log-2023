@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 
-export const getIndex = (_: any, index: number) => index;
+export const getIndex = (_, index) => index;
 
 const Flame = () => {
   const colors = ['#ff0000', '#ff5a00', '#ff9a00', '#ffce00', '#ffe808'];
