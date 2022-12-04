@@ -4,7 +4,7 @@ import { loadFireworksPreset } from 'tsparticles-preset-fireworks';
 
 import { rgbToHsl, setRangeValue, stringToRgb } from 'tsparticles-engine';
 
-export class ParticlesContainer {
+export class ParticlesContainer extends React.Component {
   // this customizes the component tsParticles installation
   async customInit(engine) {
     // this adds the preset to tsParticles, you can safely use the
