@@ -6,6 +6,14 @@ module.exports = {
   ],
   theme: {
     extend: {
+      borderWidth: {
+        '16': '16px',
+        '24': '24px',
+        '32': '32px',
+        '48': '48px',
+        '64': '64px',
+        '96': '96px',
+      },
       colors: {
         grey: {
           DEFAULT: '#eee',
@@ -51,10 +59,13 @@ module.exports = {
       rotate: {
         30: '30deg',
         60: '60deg',
+        135: '135deg',
         210: '210deg',
+        235: '235deg',
         n30: '-30deg',
         n45: '-45deg',
         n60: '-60deg',
+        n135: '-135deg',
       },
     },
   },

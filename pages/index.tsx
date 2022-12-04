@@ -4,6 +4,7 @@ import Floor from '../components/Floor';
 import Woods from '../components/Woods';
 import Flames from '../components/Flames';
 import SnowFall from '../components/SnowFall';
+import Snowman from '../components/Snowman';
 import Fireworks from '../components/Fireworks';
 
 export default function YuleLog() {
@@ -30,7 +31,7 @@ export default function YuleLog() {
             <SnowFall />
           </div>
         )}
-        
+
         {/* Fireplace */}
         <div className="fixed bottom-0 flex items-center justify-center z-30">
           <div className="absolute bottom-28 left-1/2 -translate-x-1/2 flex justify-center items-center">
@@ -40,7 +41,10 @@ export default function YuleLog() {
             <Woods />
           </div>
         </div>
-        
+
+        {/* Snowman */}
+        <Snowman />
+
         {/* Layered Background */}
         <div className="fixed bottom-0 left-0 z-10">
           <Floor />
