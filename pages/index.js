@@ -13,7 +13,7 @@ export default function YuleLog() {
   useEffect(() => {
     setTimeout(() => {
       setCurrentAnimation(currentAnimation === 'snow' ? 'fireworks' : 'snow');
-    }, 10000);
+    }, 30000);
   }, [currentAnimation]);
   return (
     <>
